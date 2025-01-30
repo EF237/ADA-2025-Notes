@@ -56,5 +56,17 @@ p <- p + geom_jitter(
   width = 0.5
 )
 
+p <- ggplot(
+  data = d,
+  aes(x = Family, y = log(Body_mass_female_mean)))+
+  geom_boxplot(na.rm=TRUE) +
+  geom_jitter(
+    color = "red",
+    width = 0.5) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  ylab("log(Female Body Mass)")
+
 p
+
+
            
