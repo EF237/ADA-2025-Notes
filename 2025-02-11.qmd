@@ -1,0 +1,66 @@
+---
+title: "2/11/25"
+author: "Joyradyn"
+format: html
+editor: visual
+---
+
+## Class Notes
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+install.packages(diplyr)
+library(diplyr)
+
+
+```
+
+
+loops
+for (i in 1:....) {do this"}
+
+```{r}
+for (i in 1:10) {
+  print(i)
+}
+```
+
+whiel (<<<test>>>) {do this}
+
+```{r}
+
+i < 1
+while (i <+ 10) {
+  print(i) 
+  i <- i + 1
+}
+```
+
+################## zotero reference manager ##################################
+
+# papers.csv as p
+```{r}
+p <- read_csv("https://raw.githubusercontent.com/difiore/ada-datasets/refs/heads/main/papers.csv")
+
+#creators.csv as c
+c <- read_csv("https://raw.githubusercontent.com/difiore/ada-datasets/refs/heads/main/creators.csv")
+
+p <- p |>
+  separate_wider_delim(cols = Author,
+                       delim = ";",
+                       names = c("First Author", "A2", "A3", "A4"),
+                       too_few = "align_start", too_many = "drop") |>
+  mutate(A2 = str_trim('A2', "both"),
+         A3 = str_trim('A3', "both"),
+         A4 = str_trim('A4', "both"))
+
+c <- c |>
+  distinct()
+
+head(c)
+
+p <- p |>
+  separate_wider_delim()
+
