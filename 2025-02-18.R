@@ -92,6 +92,6 @@ histogram(x$mean)
 plotDist("t", df=99, xlab="x", ylab="Frequency", col="red")
 
 plotDist("t", df = 50, add = TRUE)
-
+d
 
 plotDist("beta", shape1 = 3 , shape2 = .4)
