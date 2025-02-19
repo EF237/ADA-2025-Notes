@@ -17,9 +17,7 @@ library(diplyr)
 
 ```
 
-
-loops
-for (i in 1:....) {do this"}
+loops for (i in 1:....) {do this"}
 
 ```{r}
 for (i in 1:10) {
@@ -27,7 +25,7 @@ for (i in 1:10) {
 }
 ```
 
-whiel (<<<test>>>) {do this}
+whiel (\<\<<test>\>\>) {do this}
 
 ```{r}
 
@@ -38,9 +36,10 @@ while (i <+ 10) {
 }
 ```
 
-################## zotero reference manager ##################################
+################## zotero reference manager
 
 # papers.csv as p
+
 ```{r}
 p <- read_csv("https://raw.githubusercontent.com/difiore/ada-datasets/refs/heads/main/papers.csv")
 
@@ -64,3 +63,4 @@ head(c)
 p <- p |>
   separate_wider_delim()
 
+```
