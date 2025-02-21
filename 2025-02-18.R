@@ -92,6 +92,62 @@ histogram(x$mean)
 plotDist("t", df=99, xlab="x", ylab="Frequency", col="red")
 
 plotDist("t", df = 50, add = TRUE)
-d
 
-plotDist("beta", shape1 = 3 , shape2 = .4)
+
+plotDist("beta", shape1 = 0.3 , shape2 = 4)
+
+x = rbeta(n = 100, shape1 = 0.3, shape2 = 4)
+
+histogram(x)
+
+reps <- 500
+
+s <- do(reps) * mean (rbeta(n=20, .3, 4))
+
+histogram(s$mean)
+sd(s$mean)
+
+se = sd(x)/sqrt(length(x))
+
+c <- qnorm(c(0.025, 0.50, 0.975), mean = 0, sd =1)
+
+
+d = qnorm(p = c(0.025, 0.975), mean = 0, sd = 1)
+
+plotDist("beta", shape1 =2, shape2 = 4)
+c = qbeta(p = c(0.025, 0.975), shape1 = 2, shape2 = 4)
+
+# confidience interval:
+# +/- ctricial value x the standard error of the statistics
+
+x = c(2.9, 4.8, 8.9, -3.2, 9.1, -2.5, -0.9, -0.1, 2.8, -1.7)
+m = mean(x)
+se = sd(x)/sqrt(length(x))
+ci = m + qnorm(c(0.025, 0.975)) * se
+ci = m + c(qnorm(0.025), qnorm(0.975)) * se
+
+percent_ci = 0.95
+alpha = 1 - percnet_ci/100
+ci = m + qnorm(c(alpha/2, (1 - (alpha/2)))) * se
+
+
+#Central Limit Theorem (CLT) - basis
+
+#Z value is understood as the critical value
+
+#T value is crtical value for small sample size
+
+#degrees of freedom is sample size minus 1 / T value is only possible if your data set is less than 30
+
+#marticarlo simulation
+
+n_boot = 10000
+boot = vector(length=n_boot)
+n = length(x)
+for (i in 1:n_boot){
+  boot[[i]] = mean(sample(x, n, replace=TRUE))
+}
+ci = quantile(boot, probs = c(0.025, 0.975))
+
+histogram(boot)
+hist(boot)
