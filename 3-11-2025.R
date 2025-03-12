@@ -107,3 +107,9 @@ mle_norm <- bbmle::mle2(
 )
 
 mle_norm
+
+
+
+
+
+
